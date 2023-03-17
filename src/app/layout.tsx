@@ -16,7 +16,10 @@ const uncutSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Wade Rodgers",
+  title: {
+    default: "Director — Wade Rodgers",
+    template: "%s — Wade Rodgers",
+  },
 };
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
@@ -28,9 +31,9 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
       <body className="flex flex-col bg-white text-neutral-900">
-        <main className="container relative flex">
+        <main className="container flex flex-col pt-12 md:flex-row">
           <Navigation />
-          {children}
+          <div className="flex-grow">{children}</div>
         </main>
       </body>
     </html>
