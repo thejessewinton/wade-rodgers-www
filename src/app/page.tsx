@@ -5,6 +5,7 @@ export const revalidate = 60;
 const sampleProjects = Array.from({ length: 10 }, (_, i) => ({
   id: i,
   title: "Project Title",
+  client: "Test Client",
   url: "/",
 }));
 

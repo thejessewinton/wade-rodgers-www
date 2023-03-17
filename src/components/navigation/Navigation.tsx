@@ -27,12 +27,15 @@ export const Navigation = () => {
     <div className="sticky top-12 h-full max-h-full w-56">
       <Logo />
 
-      <div className="mt-20 flex flex-col space-y-8 font-mono tracking-tighter">
+      <div className="mt-20 flex flex-col space-y-8 font-brand font-medium">
         {items.map((item) => (
-          <div key={item.url} className="group flex items-center gap-4">
-            <span
+          <div
+            key={item.url}
+            className="group flex items-center gap-4 tracking-wide"
+          >
+            <div
               className={classnames(
-                "block h-1 w-1 scale-0 rounded-full bg-brand transition-all group-hover:scale-100",
+                "block h-1 w-1 shrink-0 scale-0 rounded-full bg-brand transition-all duration-500 group-hover:scale-100",
                 pathname === item.url && "scale-100"
               )}
             />
