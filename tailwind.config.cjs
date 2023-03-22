@@ -49,6 +49,9 @@ module.exports = {
           },
         },
       }),
+      aspectRatio: {
+        widescreen: "3/1",
+      },
       animation: {
         up: "animate-up 0.75s ease-in-out both",
         blur: "animate-blur 0.75s ease-in-out both, animate-opacity 0.75s ease-in-out both",

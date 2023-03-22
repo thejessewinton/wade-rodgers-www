@@ -4,7 +4,7 @@ import { Space_Mono } from "next/font/google";
 import type { Metadata } from "next";
 
 import "../styles/globals.css";
-import { Navigation } from "../components/navigation/Navigation";
+import { Header } from "../components/header/Header";
 
 const mono = Space_Mono({
   weight: ["400"],
@@ -13,7 +13,7 @@ const mono = Space_Mono({
 });
 
 const brand = localFont({
-  src: "../../public/fonts/panamera-sans.woff2",
+  src: "../../public/fonts/victor-serif.woff2",
   variable: "--font-brand",
 });
 
@@ -33,14 +33,14 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${brand.variable} h-full leading-loose`}
+      className={`${mono.variable} ${sans.variable} ${brand.variable} h-full scroll-smooth leading-loose`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
       <body className="flex flex-col bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white">
-        <main className="container flex flex-col pt-12 md:flex-row">
-          <Navigation />
-          <div className="flex-grow">{children}</div>
+        <main className="relative">
+          <Header />
+          {children}
         </main>
       </body>
     </html>

@@ -1,20 +1,13 @@
-import { ProjectCard } from "../components/project-card/ProjectCard";
+import { About } from "./sections/About";
+import { SelectedWorks } from "./sections/SelectedWorks";
 
 export const revalidate = 60;
 
-const sampleProjects = Array.from({ length: 10 }, (_, i) => ({
-  id: i,
-  title: "Project Title",
-  client: "Test Client",
-  url: "/",
-}));
-
 const Index = async () => {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
-      {sampleProjects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
+    <div className="">
+      <SelectedWorks />
+      <About />
     </div>
   );
 };
