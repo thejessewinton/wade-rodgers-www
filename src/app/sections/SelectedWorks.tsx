@@ -1,5 +1,6 @@
+"use client";
+
 import { ProjectCard } from "../../components/project-card/ProjectCard";
-import { sections } from "../../utils/sections";
 
 const sampleProjects = Array.from({ length: 10 }, (_, i) => ({
   id: i,
@@ -10,7 +11,7 @@ const sampleProjects = Array.from({ length: 10 }, (_, i) => ({
 
 export const SelectedWorks = () => {
   return (
-    <div id={sections.selectedWorks.id} className="pt-20">
+    <div id="selected-works" className="scroll-mt-20">
       {sampleProjects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}

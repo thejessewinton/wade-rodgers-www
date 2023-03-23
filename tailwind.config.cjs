@@ -17,7 +17,7 @@ module.exports = {
       },
       fontFamily: {
         mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
-        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        sans: ["Helvetica Neue", ...defaultTheme.fontFamily.sans],
         brand: ["var(--font-brand)", ...defaultTheme.fontFamily.sans],
       },
       blur: {
