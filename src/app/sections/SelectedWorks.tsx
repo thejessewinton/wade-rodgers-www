@@ -11,7 +11,7 @@ const sampleProjects = Array.from({ length: 3 }, (_, i) => ({
 
 export const SelectedWorks = () => {
   return (
-    <div id="selected-works" className="scroll-mt-20">
+    <div id="selected-works" className="scroll-mt-20 space-y-1">
       {sampleProjects.map((project) => (
         <ProjectCard key={project.id} project={project} />
       ))}
