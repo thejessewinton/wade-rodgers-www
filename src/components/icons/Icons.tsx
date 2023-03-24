@@ -69,7 +69,7 @@ export const PlayIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={clsx(
-        "fill-transparent stroke-white transition-all hover:fill-white",
+        "h-24 w-24 fill-transparent stroke-white transition-all hover:fill-white",
         className
       )}
       {...rest}
@@ -77,6 +77,7 @@ export const PlayIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
       <path
         d="M1 8.80873V1.61803L7.84828 5.04217L1 8.80873Z"
         strokeWidth={0.35}
+        className="h-full w-full"
       />
     </svg>
   );

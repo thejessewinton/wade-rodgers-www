@@ -5,7 +5,7 @@ export const revalidate = 60;
 
 const Index = async () => {
   return (
-    <div className="">
+    <div className="space-y-1">
       <SelectedWorks />
       <About />
     </div>

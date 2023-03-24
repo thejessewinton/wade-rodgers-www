@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PlayIcon } from "../icons/Icons";
+import { useScreenSize } from "../../hooks/use-screen-size";
 import { Player } from "../player/Player";
 
 export const ProjectCard = ({
@@ -19,23 +19,38 @@ export const ProjectCard = ({
     setPlayerOpen(!playerOpen);
   };
 
+  const size = useScreenSize();
+
+  const autoplayParam = size.width >= 1024 ? "1" : "0";
+
+  const params = new URLSearchParams({
+    title: "0",
+    byline: "0",
+    portrait: "0",
+    autoplay: autoplayParam,
+    background: "1",
+    loop: "1",
+  });
+
   return (
-    <div className="group relative mb-1 flex aspect-widescreen h-full w-full flex-col items-center justify-center bg-neutral-900 dark:bg-white">
-      {/* <div className="mt-auto mb-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <h2 className="font-brand text-3xl text-white dark:text-neutral-900">
-          {project.title}
-        </h2>
-        <span className="font-sans text-brand">{project.client}</span>
-      </div> */}
+    <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
+      <div className="z-10 text-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <button
+          onClick={handlePlayerOpen}
+          className="flex flex-col items-center justify-center text-white"
+        >
+          <h2 className="font-brand text-3xl text-white dark:text-neutral-900">
+            {project.title}
+          </h2>
+          <span className="font-sans text-brand">{project.client}</span>
+        </button>
+      </div>
       <iframe
-        src="https://player.vimeo.com/video/778231216?title=0&byline=0&portrait=0&background=1&autoplay=1"
+        src={`https://player.vimeo.com/video/778231216?${params.toString()}`}
         allowFullScreen
         loading="lazy"
-        className="pointer-events-none min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
+        className="absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
       />
-      <button onClick={handlePlayerOpen} className="absolute text-white">
-        <PlayIcon className="h-24 w-24" />
-      </button>
       <Player open={playerOpen} onClose={handlePlayerOpen} />
     </div>
   );

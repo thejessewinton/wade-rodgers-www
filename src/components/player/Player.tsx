@@ -1,5 +1,3 @@
-"use client";
-
 import { Dialog } from "@headlessui/react";
 import { CloseIcon } from "../icons/Icons";
 import VimeoPlayer from "@vimeo/player";
@@ -14,12 +12,18 @@ export const Player = ({ open, onClose }: PlayerProps) => {
   const ref = useRef<HTMLIFrameElement | null>(null);
 
   useEffect(() => {
-    if (ref.current) {
+    if (open && ref.current) {
       const player = new VimeoPlayer(ref.current);
 
-      player.play();
+      player.on("ended", () => {
+        const timeout = setTimeout(() => {
+          onClose();
+        }, 2000);
+
+        return () => clearTimeout(timeout);
+      });
     }
-  }, [ref]);
+  }, [ref, open, onClose]);
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -32,7 +36,7 @@ export const Player = ({ open, onClose }: PlayerProps) => {
         </button>
         <iframe
           ref={ref}
-          src="https://player.vimeo.com/video/778231216?title=0&byline=0&portrait=0&autoplay=1&branding=0&portait=0&byline=0&title=0"
+          src={`https://player.vimeo.com/video/778231216?title=0&byline=0&portrait=0&autoplay=1&branding=0&portait=0&byline=0&title=0`}
           allowFullScreen
           loading="lazy"
           className="min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
