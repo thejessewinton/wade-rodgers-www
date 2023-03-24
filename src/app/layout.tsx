@@ -40,7 +40,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
       <body className="flex flex-col bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white">
         <main className="relative">
           <Header />
-          {children}
+          <div className="relative">{children}</div>
         </main>
       </body>
     </html>
