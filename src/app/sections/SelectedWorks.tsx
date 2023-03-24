@@ -2,7 +2,7 @@
 
 import { ProjectCard } from "../../components/project-card/ProjectCard";
 
-const sampleProjects = Array.from({ length: 10 }, (_, i) => ({
+const sampleProjects = Array.from({ length: 3 }, (_, i) => ({
   id: i,
   title: "Project Title",
   client: "Test Client",

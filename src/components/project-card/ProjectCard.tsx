@@ -1,3 +1,9 @@
+"use client";
+
+import { useState } from "react";
+import { PlayIcon } from "../icons/Icons";
+import { Player } from "../player/Player";
+
 export const ProjectCard = ({
   project,
 }: {
@@ -7,8 +13,14 @@ export const ProjectCard = ({
     client: string;
   };
 }) => {
+  const [playerOpen, setPlayerOpen] = useState(false);
+
+  const handlePlayerOpen = () => {
+    setPlayerOpen(!playerOpen);
+  };
+
   return (
-    <div className="group relative mb-2 flex aspect-widescreen h-full w-full flex-col bg-neutral-900 dark:bg-white">
+    <div className="group relative mb-1 flex aspect-widescreen h-full w-full flex-col items-center justify-center bg-neutral-900 dark:bg-white">
       {/* <div className="mt-auto mb-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
         <h2 className="font-brand text-3xl text-white dark:text-neutral-900">
           {project.title}
@@ -21,6 +33,10 @@ export const ProjectCard = ({
         loading="lazy"
         className="pointer-events-none min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
       />
+      <button onClick={handlePlayerOpen} className="absolute text-white">
+        <PlayIcon className="h-24 w-24" />
+      </button>
+      <Player open={playerOpen} onClose={handlePlayerOpen} />
     </div>
   );
 };
