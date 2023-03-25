@@ -9,12 +9,12 @@ const items = [
     id: "selected-works",
   },
   {
-    label: "About",
-    id: "about",
-  },
-  {
     label: "Stills",
     id: "stills",
+  },
+  {
+    label: "About",
+    id: "about",
   },
 ];
 
