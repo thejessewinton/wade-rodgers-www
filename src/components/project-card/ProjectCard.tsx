@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useScreenSize } from "../../hooks/use-screen-size";
 import { Player } from "../player/Player";
 
@@ -51,6 +51,7 @@ export const ProjectCard = ({
         loading="lazy"
         className="absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
       />
+
       <Player open={playerOpen} onClose={handlePlayerOpen} />
     </div>
   );

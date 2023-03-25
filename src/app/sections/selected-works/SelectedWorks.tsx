@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectCard } from "../../components/project-card/ProjectCard";
+import { ProjectCard } from "../../../components/project-card/ProjectCard";
 
 const sampleProjects = Array.from({ length: 3 }, (_, i) => ({
   id: i,

@@ -1,11 +1,11 @@
-import Polaroid from "../../../public/wade.jpg";
+import Polaroid from "../../../../public/wade.jpg";
 import Image from "next/image";
 
 export const About = () => {
   return (
     <div
       id="about"
-      className="flex min-h-screen scroll-mt-20 items-center justify-center bg-slate-50"
+      className="flex scroll-mt-20 items-center justify-center bg-slate-50 py-40"
     >
       <div className="mx-auto grid max-w-4xl gap-8 px-8 md:grid-cols-2">
         <Image src={Polaroid} alt="Wade" placeholder="blur" />

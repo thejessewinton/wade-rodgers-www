@@ -11,7 +11,7 @@ export const Header = () => {
           <Logo />
         </Link>
         <Navigation />
-        <Socials />
+        <Socials className="hidden gap-4 md:flex" />
       </div>
     </header>
   );

@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import Link from "next/link";
+import type { HTMLAttributes } from "react";
 import { InstagramIcon, VimeoIcon } from "../icons/Icons";
 import { Email } from "./email/Email";
 
@@ -17,9 +19,13 @@ const items = [
   },
 ];
 
-export const Socials = () => {
+interface SocialsProps extends HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+export const Socials = ({ className, ...props }: SocialsProps) => {
   return (
-    <div className="flex gap-4 font-brand font-medium">
+    <div className={clsx("flex font-brand font-medium", className)} {...props}>
       {items.map((item) => {
         return (
           <div

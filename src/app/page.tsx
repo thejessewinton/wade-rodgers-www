@@ -1,6 +1,6 @@
-import { About } from "./sections/About";
-import { SelectedWorks } from "./sections/SelectedWorks";
-import { Stills } from "./sections/Stills";
+import { About } from "./sections/about/About";
+import { SelectedWorks } from "./sections/selected-works/SelectedWorks";
+import { Stills } from "./sections/stills/Stills";
 
 export const revalidate = 60;
 
