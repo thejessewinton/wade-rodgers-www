@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useScreenSize } from "../../hooks/use-screen-size";
 import { Player } from "../player/Player";
 
@@ -39,10 +39,12 @@ export const ProjectCard = ({
           onClick={handlePlayerOpen}
           className="flex flex-col items-center justify-center text-white"
         >
-          <h2 className="font-brand text-3xl text-white dark:text-neutral-900">
+          <h2 className="font-serif text-3xl uppercase text-white dark:text-neutral-900">
             {project.title}
           </h2>
-          <span className="font-sans text-brand">{project.client}</span>
+          <span className="font-sans font-normal uppercase">
+            {project.client}
+          </span>
         </button>
       </div>
       <iframe

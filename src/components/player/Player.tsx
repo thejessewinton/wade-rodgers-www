@@ -19,7 +19,11 @@ export const Player = ({ open, onClose }: PlayerProps) => {
   }, [open, onClose]);
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      onKeyDown={(e) => e.stopPropagation()}
+    >
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
         <button
           onClick={onClose}

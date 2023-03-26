@@ -6,7 +6,7 @@ import { Socials } from "../socials/Socials";
 export const Header = () => {
   return (
     <header className="sticky top-0 z-50 h-20 w-full bg-white">
-      <div className="container flex h-full items-center justify-between">
+      <div className="flex h-full items-center justify-between px-5">
         <Link href="/">
           <Logo />
         </Link>

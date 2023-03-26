@@ -1,21 +1,20 @@
 import clsx from "clsx";
 import Link from "next/link";
 import type { HTMLAttributes } from "react";
-import { InstagramIcon, VimeoIcon } from "../icons/Icons";
-import { Email } from "./email/Email";
+import { Airplane, InstagramIcon, VimeoIcon } from "../icons/Icons";
 
 const items = [
   {
     label: "Email",
-    url: "email@email.com",
-  },
-  {
-    label: "Vimeo",
-    url: "https://vimeo.com",
+    url: "mailto:email@email.com",
   },
   {
     label: "Instagram",
     url: "https://instagram.com",
+  },
+  {
+    label: "Vimeo",
+    url: "https://vimeo.com",
   },
 ];
 
@@ -24,27 +23,25 @@ interface SocialsProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Socials = ({ className, ...props }: SocialsProps) => {
+  const iconClassName = "transition-colors hover:text-neutral-600";
   return (
-    <div className={clsx("flex font-brand font-medium", className)} {...props}>
+    <div className={clsx("flex font-serif font-medium", className)} {...props}>
       {items.map((item) => {
         return (
           <div
             key={item.url}
             className="group flex flex-col items-center justify-center"
           >
-            {item.label === "Instagram" ? (
-              <Link href={item.url} target="_blank" key={item.label}>
-                <span className="sr-only">{item.label}</span>
-                <InstagramIcon className="transition-colors hover:text-neutral-300" />
-              </Link>
-            ) : item.label === "Vimeo" ? (
-              <Link href={item.url} target="_blank" key={item.label}>
-                <span className="sr-only">{item.label}</span>
-                <VimeoIcon className="transition-colors hover:text-neutral-300" />
-              </Link>
-            ) : item.label === "Email" ? (
-              <Email email={item.url} />
-            ) : null}
+            <Link href={item.url} target="_blank" key={item.label}>
+              <span className="sr-only">{item.label}</span>
+              {item.label === "Instagram" ? (
+                <InstagramIcon className={iconClassName} />
+              ) : item.label === "Vimeo" ? (
+                <VimeoIcon className={iconClassName} />
+              ) : item.label === "Email" ? (
+                <Airplane className={iconClassName} />
+              ) : null}
+            </Link>
           </div>
         );
       })}
