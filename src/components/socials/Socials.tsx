@@ -1,6 +1,11 @@
-import clsx from "clsx";
+"use client";
+
+import { clsx } from "clsx";
 import Link from "next/link";
 import type { HTMLAttributes } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useWiggle } from "../../hooks/use-wiggle";
 import { Airplane, InstagramIcon, VimeoIcon } from "../icons/Icons";
 
 const items = [
@@ -24,6 +29,8 @@ interface SocialsProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Socials = ({ className, ...props }: SocialsProps) => {
   const iconClassName = "transition-colors hover:text-neutral-600";
+  const wiggling = useWiggle();
+
   return (
     <div className={clsx("flex font-serif font-medium", className)} {...props}>
       {items.map((item) => {
@@ -39,7 +46,12 @@ export const Socials = ({ className, ...props }: SocialsProps) => {
               ) : item.label === "Vimeo" ? (
                 <VimeoIcon className={iconClassName} />
               ) : item.label === "Email" ? (
-                <Airplane className={iconClassName} />
+                <Airplane
+                  className={clsx(
+                    iconClassName,
+                    wiggling ? "animate-wiggle" : ""
+                  )}
+                />
               ) : null}
             </Link>
           </div>
