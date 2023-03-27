@@ -18,11 +18,11 @@ const items = [
   },
 ];
 
-export const Navigation = () => {
+export const Navigation = ({ className }: { className?: string }) => {
   const hash = useHash();
 
   return (
-    <nav className="flex gap-10 font-serif font-medium">
+    <nav className={clsx("gap-10 font-serif font-medium", className)}>
       {items.map((item) => {
         const isActive = hash === `#${item.id}`;
 

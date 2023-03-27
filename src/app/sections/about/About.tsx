@@ -31,18 +31,24 @@ export const About = () => {
   return (
     <div
       id="about"
-      className="flex scroll-mt-20 items-center justify-center bg-slate-50 py-40"
+      className="flex min-h-screen scroll-mt-20 flex-col justify-center"
     >
+      <div className="px-5">
+        <h2 className="py-10 font-serif text-2xl uppercase">About</h2>
+      </div>
       <div className="mx-auto grid max-w-4xl gap-24 px-8 md:grid-cols-2">
         <div>
           <Image src={Polaroid} alt="Wade" placeholder="blur" />
-          <Email email={"email@email.com"} />
+          <Email email={"email@email.com"} className="hidden md:flex" />
         </div>
 
-        <div
-          className="space-y-12 text-base"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <div className="pb-40 md:pb-0">
+          <div
+            className="space-y-12 text-base"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+          <Email email={"email@email.com"} className="mt-10 flex md:hidden" />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import type { KeenSliderPlugin } from "keen-slider/react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useState } from "react";
@@ -15,26 +16,88 @@ const sampleSlides = Array.from({ length: 20 }, (_, i) => ({
 export const Stills = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const [ref, instance] = useKeenSlider<HTMLDivElement>({
-    slideChanged: (slider) => {
-      setCurrentSlide(slider.track.details.rel);
-    },
-    created: () => {
-      setLoaded(true);
-    },
-    breakpoints: {
-      "(min-width: 640px)": {
-        slides: { perView: 1, spacing: 5 },
+
+  const WheelControls: KeenSliderPlugin = (slider) => {
+    let touchTimeout: ReturnType<typeof setTimeout>;
+    let position: {
+      x: number;
+      y: number;
+    };
+    let wheelActive: boolean;
+
+    function dispatch(e: WheelEvent, name: string) {
+      position.x -= e.deltaX;
+      position.y -= e.deltaY;
+      slider.container.dispatchEvent(
+        new CustomEvent(name, {
+          detail: {
+            x: position.x,
+            y: position.y,
+          },
+        })
+      );
+    }
+
+    function wheelStart(e: WheelEvent) {
+      position = {
+        x: e.pageX,
+        y: e.pageY,
+      };
+      dispatch(e, "ksDragStart");
+    }
+
+    function wheel(e: WheelEvent) {
+      dispatch(e, "ksDrag");
+    }
+
+    function wheelEnd(e: WheelEvent) {
+      dispatch(e, "ksDragEnd");
+    }
+
+    function eventWheel(e: WheelEvent) {
+      e.preventDefault();
+      if (!wheelActive) {
+        wheelStart(e);
+        wheelActive = true;
+      }
+      wheel(e);
+      clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => {
+        wheelActive = false;
+        wheelEnd(e);
+      }, 50);
+    }
+
+    slider.on("created", () => {
+      slider.container.addEventListener("wheel", eventWheel, {
+        passive: false,
+      });
+    });
+  };
+
+  const [ref, instance] = useKeenSlider<HTMLDivElement>(
+    {
+      slideChanged: (slider) => {
+        setCurrentSlide(slider.track.details.rel);
       },
-      "(min-width: 768px)": {
-        slides: { perView: 2, spacing: 5 },
+      created: () => {
+        setLoaded(true);
       },
-      "(min-width: 1024px)": {
-        slides: { perView: 3, spacing: 5 },
+      breakpoints: {
+        "(min-width: 640px)": {
+          slides: { perView: 1 },
+        },
+        "(min-width: 768px)": {
+          slides: { perView: 2 },
+        },
+        "(min-width: 1024px)": {
+          slides: { perView: 3 },
+        },
       },
+      slides: { perView: 1 },
     },
-    slides: { perView: 1 },
-  });
+    [WheelControls]
+  );
 
   return (
     <div id="stills" className="min-h-screen scroll-mt-20">
@@ -59,7 +122,7 @@ export const Stills = () => {
           >
             <LeftArrow className="h-24 w-24" />
           </button>
-          <span className="font-serif uppercase">Swipe</span>
+          <span className="font-serif uppercase italic">Swipe</span>
           <button
             onClick={() => instance.current?.next()}
             disabled={
