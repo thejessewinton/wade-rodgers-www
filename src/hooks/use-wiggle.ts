@@ -11,7 +11,7 @@ export const useWiggle = () => {
       const interval = setInterval(() => {
         setWiggling(true);
         setTimeout(() => setWiggling(false), 2000);
-      }, 1000);
+      }, 10000);
 
       return () => clearInterval(interval);
     }
