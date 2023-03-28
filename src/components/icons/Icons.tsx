@@ -11,7 +11,7 @@ export const Logo = ({ className, ...props }: SVGAttributes<SVGElement>) => {
       height="54"
       fill="none"
       viewBox="0 0 128 54"
-      className={clsx("h-10 w-auto", className)}
+      className={clsx("h-8 w-auto", className)}
       {...props}
     >
       <path

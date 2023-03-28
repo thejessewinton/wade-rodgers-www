@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.13",
     "@vimeo/player": "^2.18.0",
     "clsx": "^1.2.1",
+    "framer-motion": "^10.9.1",
     "keen-slider": "^6.8.5",
     "next": "13.2.4",
     "react": "18.2.0",

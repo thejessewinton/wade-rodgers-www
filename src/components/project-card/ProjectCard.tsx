@@ -14,6 +14,7 @@ export const ProjectCard = ({
   };
 }) => {
   const [playerOpen, setPlayerOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const handlePlayerOpen = () => {
     setPlayerOpen(!playerOpen);
@@ -47,10 +48,12 @@ export const ProjectCard = ({
           </span>
         </button>
       </div>
+
       <iframe
         src={`https://player.vimeo.com/video/778231216?${params.toString()}`}
         allowFullScreen
         loading="lazy"
+        onLoad={() => setLoaded(true)}
         className="absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
       />
 
