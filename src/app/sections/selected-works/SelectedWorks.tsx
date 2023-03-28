@@ -14,7 +14,7 @@ export const SelectedWorks = () => {
   return (
     <div id="selected-works" className="scroll-mt-20 space-y-1">
       {sampleProjects.map((project) => (
-        <ScrollObserver key={project.id}>
+        <ScrollObserver title={project.title} key={project.id}>
           <ProjectCard project={project} />
         </ScrollObserver>
       ))}
