@@ -100,15 +100,15 @@ export const Stills = () => {
   );
 
   return (
-    <div id="stills" className="min-h-screen scroll-mt-20">
-      <div className="px-5">
-        <h2 className="py-10 font-serif text-2xl uppercase">Stills</h2>
+    <div id="stills" className="min-h-screen scroll-mt-16">
+      <div className="ml-[10px] px-2">
+        <h2 className="py-1 text-xl uppercase text-neutral-500">Stills</h2>
       </div>
       <div ref={ref} className="keen-slider">
         {sampleSlides.map((project) => (
           <div
             key={project.id}
-            className="keen-slider__slide h-[600px] w-[400px] odd:bg-black even:bg-neutral-300"
+            className="keen-slider__slide h-[400px] w-[400px] odd:bg-black even:bg-neutral-300 md:h-[600px]"
           />
         ))}
       </div>
@@ -122,13 +122,13 @@ export const Stills = () => {
           >
             <LeftArrow className="h-24 w-24" />
           </button>
-          <span className="font-serif uppercase italic">Swipe</span>
+          <span className="uppercase italic text-neutral-500">Swipe</span>
           <button
             onClick={() => instance.current?.next()}
             disabled={
               currentSlide === instance.current.track.details.slides.length - 1
             }
-            className="transition-transform duration-500 hover:translate-x-4 disabled:cursor-none disabled:cursor-not-allowed disabled:opacity-50"
+            className="transition-transform duration-500 hover:translate-x-4 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <RightArrow className="h-24 w-24" />
           </button>

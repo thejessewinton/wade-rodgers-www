@@ -12,7 +12,7 @@ const sampleProjects = Array.from({ length: 3 }, (_, i) => ({
 
 export const SelectedWorks = () => {
   return (
-    <div id="selected-works" className="scroll-mt-20 space-y-1">
+    <div id="selected-works" className="scroll-mt-16 space-y-2 md:space-y-4">
       {sampleProjects.map((project) => (
         <ScrollObserver title={project.title} key={project.id}>
           <ProjectCard project={project} />

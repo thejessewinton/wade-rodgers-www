@@ -10,8 +10,8 @@ export const useWiggle = () => {
     if (hash === "#about") {
       const interval = setInterval(() => {
         setWiggling(true);
-        setTimeout(() => setWiggling(false), 2000);
-      }, 10000);
+        setTimeout(() => setWiggling(false), 6000);
+      }, 5000);
 
       return () => clearInterval(interval);
     }

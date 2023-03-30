@@ -28,16 +28,18 @@ export const Email = ({
   }, [isCopied]);
 
   return (
-    <button
-      onClick={handleClick}
-      className={clsx(
-        "relative mx-auto mt-4 items-center justify-center gap-2 bg-black px-4 py-2 text-white",
-        className
-      )}
-    >
-      <span className="font-serif uppercase">
-        {isCopied ? "Email Copied" : "Contact Directly"}
-      </span>
-    </button>
+    <div className="flex flex-col items-center gap-2">
+      <button
+        onClick={handleClick}
+        className={clsx(
+          "relative mx-auto mt-4 min-w-[250px] items-center justify-center gap-2 bg-black p-1 text-white",
+          className
+        )}
+      >
+        <span className="font-medium">
+          {isCopied ? "Email Copied" : "wade@waderodgers.com"}
+        </span>
+      </button>
+    </div>
   );
 };

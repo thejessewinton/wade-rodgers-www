@@ -3,8 +3,6 @@
 import { clsx } from "clsx";
 import Link from "next/link";
 import type { HTMLAttributes } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import { useWiggle } from "../../hooks/use-wiggle";
 import { Airplane, InstagramIcon, VimeoIcon } from "../icons/Icons";
 

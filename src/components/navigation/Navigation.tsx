@@ -22,7 +22,7 @@ export const Navigation = ({ className }: { className?: string }) => {
   const hash = useHash();
 
   return (
-    <nav className={clsx("gap-10 font-serif font-medium", className)}>
+    <nav className={clsx("gap-10 font-sans font-medium", className)}>
       {items.map((item) => {
         const isActive = hash === `#${item.id}`;
 
@@ -40,7 +40,7 @@ export const Navigation = ({ className }: { className?: string }) => {
             <a
               href={`#${item.id}`}
               key={item.id}
-              className="block w-full text-sm uppercase"
+              className="block w-full text-lg"
             >
               {item.label}
             </a>
