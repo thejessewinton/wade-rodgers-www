@@ -46,8 +46,6 @@ export const ProjectCard = ({
     loop: "1",
   });
 
-  if (!project.cover_image.widescreen.url) return null;
-
   return (
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
       <div className="z-10 text-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -64,16 +62,18 @@ export const ProjectCard = ({
         </button>
       </div>
 
-      <Image
-        src={getImageUrl(project.cover_image.widescreen.url)}
-        width={project.cover_image.widescreen.dimensions?.width}
-        height={project.cover_image.widescreen.dimensions?.height}
-        alt={asText(project.title)}
-        className="absolute w-full"
-        placeholder="blur"
-        blurDataURL={getBlurUrl(project.cover_image.widescreen.url)}
-        quality={100}
-      />
+      {!project.cover_image.widescreen.url ? null : (
+        <Image
+          src={getImageUrl(project.cover_image.widescreen.url)}
+          width={project.cover_image.widescreen.dimensions?.width}
+          height={project.cover_image.widescreen.dimensions?.height}
+          alt={asText(project.title)}
+          className="absolute w-full"
+          placeholder="blur"
+          blurDataURL={getBlurUrl(project.cover_image.widescreen.url)}
+          quality={100}
+        />
+      )}
 
       <iframe
         src={getPreviewUrl(project.video.html as string, params)}

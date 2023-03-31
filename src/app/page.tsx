@@ -2,7 +2,7 @@ import { About } from "./sections/about/About";
 import { SelectedWorks } from "./sections/selected-works/SelectedWorks";
 import { Stills } from "./sections/stills/Stills";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 const Index = async () => {
   return (
