@@ -1,4 +1,3 @@
-import { getSelectedWork } from "../utils/prismic";
 import { About } from "./sections/about/About";
 import { SelectedWorks } from "./sections/selected-works/SelectedWorks";
 import { Stills } from "./sections/stills/Stills";

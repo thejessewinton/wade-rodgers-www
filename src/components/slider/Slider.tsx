@@ -5,15 +5,15 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useState } from "react";
 import { LeftArrow, RightArrow } from "../icons/Icons";
+import type { StillsDocumentDataImagesItem } from "../../../.slicemachine/prismicio";
+import Image from "next/image";
+import { getImageUrl } from "../../utils/get-url";
 
-const sampleSlides = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  title: "Project Title",
-  client: "Test Client",
-  url: "/",
-}));
-
-export const Slider = () => {
+export const Slider = ({
+  stills,
+}: {
+  stills: StillsDocumentDataImagesItem[];
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -102,11 +102,15 @@ export const Slider = () => {
   return (
     <>
       <div ref={ref} className="keen-slider">
-        {sampleSlides.map((project) => (
-          <div
-            key={project.id}
-            className="keen-slider__slide h-[400px] w-[400px] odd:bg-black even:bg-neutral-300 md:h-[600px]"
-          />
+        {stills.map((still) => (
+          <div key={still.image.url} className="keen-slider__slide">
+            <Image
+              src={getImageUrl(still.image.url as string)}
+              alt={still.image.alt as string}
+              width={still.image.dimensions?.width}
+              height={still.image.dimensions?.height}
+            />
+          </div>
         ))}
       </div>
 

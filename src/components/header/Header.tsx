@@ -11,6 +11,7 @@ export const Header = () => {
           <Logo className="h-auto w-16 md:w-20" />
         </Link>
         <Navigation className="hidden md:flex" />
+        {/* @ts-expect-error Async Server Component */}
         <Socials className="hidden gap-4 md:flex" />
       </div>
     </header>

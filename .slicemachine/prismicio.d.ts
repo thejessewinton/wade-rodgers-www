@@ -205,12 +205,52 @@ export interface SettingsDocumentDataLinksItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
-export type AllDocumentTypes = AboutDocument | SelectedWorksDocument | SettingsDocument;
+/** Content for Stills documents */
+interface StillsDocumentData {
+    /**
+     * Images field in *Stills*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.images[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    images: prismicT.GroupField<Simplify<StillsDocumentDataImagesItem>>;
+}
+/**
+ * Item in Stills → Images
+ *
+ */
+export interface StillsDocumentDataImagesItem {
+    /**
+     * Image field in *Stills → Images*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.images[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Stills document from Prismic
+ *
+ * - **API ID**: `stills`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StillsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<StillsDocumentData>, "stills", Lang>;
+export type AllDocumentTypes = AboutDocument | SelectedWorksDocument | SettingsDocument | StillsDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocument, SelectedWorksDocumentData, SelectedWorksDocumentDataWorkItem, SelectedWorksDocument, SettingsDocumentData, SettingsDocumentDataLinksItem, SettingsDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocument, SelectedWorksDocumentData, SelectedWorksDocumentDataWorkItem, SelectedWorksDocument, SettingsDocumentData, SettingsDocumentDataLinksItem, SettingsDocument, StillsDocumentData, StillsDocumentDataImagesItem, StillsDocument, AllDocumentTypes };
     }
 }

@@ -1,0 +1,28 @@
+{
+  "id": "stills",
+  "label": "Stills",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "images": {
+        "type": "Group",
+        "config": {
+          "label": "Images",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {
+                  "height": 1000
+                },
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

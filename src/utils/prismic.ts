@@ -16,3 +16,7 @@ export const getSelectedWork = cache(async () => {
 export const getAbout = cache(async () => {
   return await client.getSingle("about");
 });
+
+export const getStills = cache(async () => {
+  return await client.getSingle("stills");
+});
