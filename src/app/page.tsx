@@ -7,6 +7,7 @@ export const revalidate = 60;
 const Index = async () => {
   return (
     <>
+      {/* @ts-expect-error Async Server Component */}
       <SelectedWorks />
       <Stills />
       <About />
