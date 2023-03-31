@@ -36,9 +36,7 @@ export const Email = ({
           className
         )}
       >
-        <span className="font-medium">
-          {isCopied ? "Email Copied" : "wade@waderodgers.com"}
-        </span>
+        <span className="font-medium">{isCopied ? "Email Copied" : email}</span>
       </button>
     </div>
   );

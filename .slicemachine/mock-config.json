@@ -1,5 +1,9 @@
 {
   "_cts": {
-    "selected_works": {}
+    "selected_works": {
+      "work": {}
+    },
+    "about": {},
+    "settings": {}
   }
 }

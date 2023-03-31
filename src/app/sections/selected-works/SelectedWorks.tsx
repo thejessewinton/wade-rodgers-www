@@ -8,7 +8,6 @@ export const SelectedWorks = async () => {
   return (
     <div id="selected-works" className="scroll-mt-16 space-y-2 md:space-y-4">
       {data.work.map((project) => {
-        if (!project) return null;
         return (
           <ScrollObserver title={project.client as string} key={project.client}>
             <ProjectCard project={project} />

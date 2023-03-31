@@ -3,7 +3,6 @@ import { CloseIcon } from "../icons/Icons";
 import VimeoPlayer from "@vimeo/player";
 import type { SyntheticEvent } from "react";
 import { Fragment } from "react";
-import { getVideoUrl } from "../../utils/get-url";
 
 interface PlayerProps {
   open: boolean;
@@ -39,7 +38,7 @@ export const Player = ({ open, onClose, video }: PlayerProps) => {
             {open ? (
               <iframe
                 onLoad={handleLoad}
-                src={getVideoUrl(video)}
+                src={video}
                 allowFullScreen
                 className="min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
               />

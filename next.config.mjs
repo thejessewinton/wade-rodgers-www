@@ -13,6 +13,9 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["images.prismic.io", "i.vimeocdn.com"],
+  },
   experimental: {
     appDir: true,
   },

@@ -7,7 +7,13 @@ import { Player } from "../player/Player";
 import VimeoPlayer from "@vimeo/player";
 import type { SelectedWorksDocumentDataWorkItem } from "../../../.slicemachine/prismicio";
 import { asText } from "@prismicio/helpers";
-import { getPreviewUrl } from "../../utils/get-url";
+import {
+  getBlurUrl,
+  getImageUrl,
+  getPreviewUrl,
+  getVideoUrl,
+} from "../../utils/get-url";
+import Image from "next/image";
 
 export const ProjectCard = ({
   project,
@@ -40,6 +46,8 @@ export const ProjectCard = ({
     loop: "1",
   });
 
+  if (!project.cover_image.widescreen.url) return null;
+
   return (
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
       <div className="z-10 text-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -56,8 +64,19 @@ export const ProjectCard = ({
         </button>
       </div>
 
+      <Image
+        src={getImageUrl(project.cover_image.widescreen.url)}
+        width={project.cover_image.widescreen.dimensions?.width}
+        height={project.cover_image.widescreen.dimensions?.height}
+        alt={asText(project.title)}
+        className="absolute w-full"
+        placeholder="blur"
+        blurDataURL={getBlurUrl(project.cover_image.widescreen.url)}
+        quality={100}
+      />
+
       <iframe
-        src={getPreviewUrl(project.video.html as string)}
+        src={getPreviewUrl(project.video.html as string, params)}
         allowFullScreen
         loading="lazy"
         onLoad={handleLoad}
@@ -65,7 +84,7 @@ export const ProjectCard = ({
       />
 
       <Player
-        video={project.video.html as string}
+        video={getVideoUrl(project.video.embed_url as string)}
         open={playerOpen}
         onClose={handlePlayerOpen}
       />

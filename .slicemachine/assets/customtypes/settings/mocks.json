@@ -1,0 +1,35 @@
+{
+  "email_address": {
+    "__TYPE__": "FieldContent",
+    "value": "rice",
+    "type": "Text"
+  },
+  "links": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "sure",
+              "type": "Text"
+            }
+          ],
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

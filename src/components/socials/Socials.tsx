@@ -1,55 +1,39 @@
-"use client";
-
+import { asLink } from "@prismicio/helpers";
 import { clsx } from "clsx";
 import Link from "next/link";
 import type { HTMLAttributes } from "react";
-import { useWiggle } from "../../hooks/use-wiggle";
-import { Airplane, InstagramIcon, VimeoIcon } from "../icons/Icons";
-
-const items = [
-  {
-    label: "Email",
-    url: "mailto:email@email.com",
-  },
-  {
-    label: "Instagram",
-    url: "https://instagram.com",
-  },
-  {
-    label: "Vimeo",
-    url: "https://vimeo.com",
-  },
-];
+import { getSettings } from "../../utils/prismic";
+import { InstagramIcon, VimeoIcon } from "../icons/Icons";
+import { Wiggle } from "./wiggle/Wiggle";
 
 interface SocialsProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const Socials = ({ className, ...props }: SocialsProps) => {
+export const Socials = async ({ className, ...props }: SocialsProps) => {
+  const { data } = await getSettings();
   const iconClassName = "transition-colors hover:text-neutral-600";
-  const wiggling = useWiggle();
 
   return (
     <div className={clsx("flex font-serif font-medium", className)} {...props}>
-      {items.map((item) => {
+      {data.links.map((item) => {
         return (
           <div
-            key={item.url}
+            key={asLink(item.link)}
             className="group flex flex-col items-center justify-center"
           >
-            <Link href={item.url} target="_blank" key={item.label}>
+            <Link
+              href={asLink(item.link) as string}
+              target="_blank"
+              key={item.label}
+            >
               <span className="sr-only">{item.label}</span>
               {item.label === "Instagram" ? (
                 <InstagramIcon className={iconClassName} />
               ) : item.label === "Vimeo" ? (
                 <VimeoIcon className={iconClassName} />
               ) : item.label === "Email" ? (
-                <Airplane
-                  className={clsx(
-                    iconClassName,
-                    wiggling ? "animate-wiggle" : ""
-                  )}
-                />
+                <Wiggle className={iconClassName} />
               ) : null}
             </Link>
           </div>

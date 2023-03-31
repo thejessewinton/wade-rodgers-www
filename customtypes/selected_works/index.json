@@ -10,6 +10,20 @@
         "config": {
           "label": "Work",
           "fields": {
+            "cover_image": {
+              "type": "Image",
+              "config": {
+                "label": "Cover Image",
+                "constraint": {},
+                "thumbnails": [
+                  {
+                    "name": "widescreen",
+                    "width": 1440,
+                    "height": 503
+                  }
+                ]
+              }
+            },
             "title": {
               "type": "StructuredText",
               "config": {

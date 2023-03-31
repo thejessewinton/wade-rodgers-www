@@ -1,0 +1,40 @@
+{
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "email_address": {
+        "type": "Text",
+        "config": {
+          "label": "Email Address",
+          "placeholder": ""
+        }
+      },
+      "links": {
+        "type": "Group",
+        "config": {
+          "label": "Links",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
