@@ -48,19 +48,17 @@ export const ProjectCard = ({
 
   return (
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
-      <div className="z-10 text-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <button
-          onClick={handlePlayerOpen}
-          className="flex flex-col items-center justify-center text-white"
-        >
-          <h2 className="font-sans text-4xl font-medium tracking-widest text-white dark:text-neutral-900 md:mb-8 md:text-6xl">
-            {asText(project.title)}
-          </h2>
+      <button
+        onClick={handlePlayerOpen}
+        className="absolute z-10 flex w-full flex-col items-center justify-center opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+      >
+        <h2 className="flex flex-col gap-5 font-sans text-4xl font-medium tracking-widest text-white md:text-6xl">
+          {asText(project.title)}
           <span className="font-sans text-xl font-normal uppercase tracking-widest">
             {project.client}
           </span>
-        </button>
-      </div>
+        </h2>
+      </button>
 
       {!project.cover_image.widescreen.url ? null : (
         <Image
@@ -68,7 +66,7 @@ export const ProjectCard = ({
           width={project.cover_image.widescreen.dimensions?.width}
           height={project.cover_image.widescreen.dimensions?.height}
           alt={asText(project.title)}
-          className="absolute block w-full md:hidden"
+          className="w-full"
           placeholder="blur"
           blurDataURL={getBlurUrl(project.cover_image.widescreen.url)}
           quality={100}
