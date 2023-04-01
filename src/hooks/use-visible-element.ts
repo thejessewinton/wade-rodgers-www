@@ -6,9 +6,6 @@ type UseVisibleElement = {
 };
 
 export const useVisibleElement = create<UseVisibleElement>((set) => ({
-  visibleElementId: "selected-works",
-  setVisibleElementId: (id) => {
-    window.location.hash = id as string;
-    set({ visibleElementId: id });
-  },
+  visibleElementId: null,
+  setVisibleElementId: (id) => set({ visibleElementId: id }),
 }));

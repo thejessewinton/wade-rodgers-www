@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { set } from "zod";
 import { useVisibleElement } from "../../hooks/use-visible-element";
 
 export const ActiveIdWrapper = ({
@@ -18,22 +19,28 @@ export const ActiveIdWrapper = ({
   const { setVisibleElementId } = useVisibleElement();
 
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      const entry = entries.find((e) => e.isIntersecting);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setVisibleElementId(entry.target.id);
+          }, 1000); // Wait for 1 second before updating active ID
+        }
+      });
+    }, {});
 
-      if (entry) {
-        setVisibleElementId(entry.target.id);
-      }
-    };
+    // Get all the elements with the class "scroll-ref"
+    const targets = document.querySelectorAll(".scroll-ref");
 
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
+    // Observe each element
+    targets.forEach((target) => {
+      observer.observe(target);
     });
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    observer.observe(ref.current!);
 
-    return () => observer.disconnect();
-  }, [setVisibleElementId, ref]);
+    return () => {
+      observer.disconnect();
+    };
+  }, [setVisibleElementId]);
 
   return (
     <div ref={ref} id={id} className={className}>
