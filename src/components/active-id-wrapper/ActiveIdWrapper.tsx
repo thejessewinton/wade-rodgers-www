@@ -19,28 +19,26 @@ export const ActiveIdWrapper = ({
   const { setVisibleElementId } = useVisibleElement();
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            setVisibleElementId(entry.target.id);
-          }, 1000); // Wait for 1 second before updating active ID
-        }
-      });
-    }, {});
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      const entry = entries.find((e) => e.isIntersecting);
 
-    // Get all the elements with the class "scroll-ref"
-    const targets = document.querySelectorAll(".scroll-ref");
+      if (entry) {
+        const timeout = setTimeout(() => {
+          setVisibleElementId(entry?.target.id);
+        }, 200);
 
-    // Observe each element
-    targets.forEach((target) => {
-      observer.observe(target);
-    });
-
-    return () => {
-      observer.disconnect();
+        return () => clearTimeout(timeout);
+      }
     };
-  }, [setVisibleElementId]);
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    observer.observe(ref.current!);
+
+    return () => observer.disconnect();
+  }, [setVisibleElementId, ref]);
 
   return (
     <div ref={ref} id={id} className={className}>
