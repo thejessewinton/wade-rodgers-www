@@ -133,6 +133,16 @@ export interface SelectedWorksDocumentDataWorkItem {
      *
      */
     video: prismicT.EmbedField;
+    /**
+     * Preview field in *Selected Works → Work*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: selected_works.work[].preview
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    preview: prismicT.EmbedField;
 }
 /**
  * Selected Works document from Prismic

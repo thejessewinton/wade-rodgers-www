@@ -46,6 +46,13 @@
                 "label": "Video",
                 "placeholder": ""
               }
+            },
+            "preview": {
+              "type": "Embed",
+              "config": {
+                "label": "Preview",
+                "placeholder": ""
+              }
             }
           }
         }

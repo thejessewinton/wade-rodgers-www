@@ -46,6 +46,8 @@ export const ProjectCard = ({
     loop: "1",
   });
 
+  console.log(project.preview.html);
+
   return (
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
       <button
@@ -74,7 +76,7 @@ export const ProjectCard = ({
       )}
 
       <iframe
-        src={getPreviewUrl(project.video.html as string, params)}
+        src={getPreviewUrl(project.preview.html as string)}
         allowFullScreen
         loading="lazy"
         onLoad={handleLoad}
