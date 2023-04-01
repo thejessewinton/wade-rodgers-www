@@ -31,7 +31,7 @@ export const Player = ({ open, onClose, video }: PlayerProps) => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 transition-transform duration-700 hover:rotate-180"
+              className="absolute top-0 right-0 transition-transform duration-700 hover:rotate-180"
             >
               <CloseIcon />
             </button>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useHash } from "./use-hash";
+import { useVisibleElement } from "./use-visible-element";
 
 export const useWiggle = () => {
-  const hash = useHash();
+  const { visibleElementId } = useVisibleElement();
 
   const [wiggling, setWiggling] = useState(false);
 
   useEffect(() => {
-    if (hash === "#about") {
+    if (visibleElementId === "about") {
       const interval = setInterval(() => {
         setWiggling(true);
         setTimeout(() => setWiggling(false), 6000);
@@ -15,7 +15,7 @@ export const useWiggle = () => {
 
       return () => clearInterval(interval);
     }
-  }, [hash]);
+  }, [visibleElementId]);
 
   return wiggling;
 };

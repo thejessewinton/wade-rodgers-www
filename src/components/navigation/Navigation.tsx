@@ -1,7 +1,7 @@
 "use client";
 
 import { clsx } from "clsx";
-import { useHash } from "../../hooks/use-hash";
+import { useVisibleElement } from "../../hooks/use-visible-element";
 
 const items = [
   {
@@ -19,12 +19,12 @@ const items = [
 ];
 
 export const Navigation = ({ className }: { className?: string }) => {
-  const hash = useHash();
+  const { visibleElementId, setVisibleElementId } = useVisibleElement();
 
   return (
     <nav className={clsx("gap-10 font-sans font-medium", className)}>
       {items.map((item) => {
-        const isActive = hash === `#${item.id}`;
+        const isActive = visibleElementId === item.id;
 
         return (
           <div
@@ -40,7 +40,8 @@ export const Navigation = ({ className }: { className?: string }) => {
             <a
               href={`#${item.id}`}
               key={item.id}
-              className="block w-full text-lg"
+              className={clsx("block w-full text-lg", isActive && "font-bold")}
+              onClick={() => setVisibleElementId(item.id)}
             >
               {item.label}
             </a>

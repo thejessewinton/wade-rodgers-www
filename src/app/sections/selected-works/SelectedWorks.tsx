@@ -1,19 +1,17 @@
+import { ActiveIdWrapper } from "../../../components/active-id-wrapper/ActiveIdWrapper";
 import { ProjectCard } from "../../../components/project-card/ProjectCard";
-import { ScrollObserver } from "../../../components/scroll-observer/ScrollObserver";
 import { getSelectedWork } from "../../../utils/prismic";
 
 export const SelectedWorks = async () => {
   const { data } = await getSelectedWork();
 
   return (
-    <div id="selected-works" className="scroll-mt-16 space-y-2 md:space-y-4">
-      {data.work.map((project) => {
-        return (
-          <ScrollObserver title={project.client as string} key={project.client}>
-            <ProjectCard project={project} />
-          </ScrollObserver>
-        );
-      })}
-    </div>
+    <ActiveIdWrapper id="selected-works" className="scroll-mt-16">
+      <div className="scroll-mt-16 space-y-2 md:space-y-4">
+        {data.work.map((project, index) => {
+          return <ProjectCard key={index} project={project} />;
+        })}
+      </div>
+    </ActiveIdWrapper>
   );
 };
