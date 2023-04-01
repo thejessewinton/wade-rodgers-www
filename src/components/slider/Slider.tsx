@@ -55,7 +55,6 @@ export const Slider = ({
     }
 
     function eventWheel(e: WheelEvent) {
-      e.preventDefault();
       if (!wheelActive) {
         wheelStart(e);
         wheelActive = true;
@@ -70,7 +69,7 @@ export const Slider = ({
 
     slider.on("created", () => {
       slider.container.addEventListener("wheel", eventWheel, {
-        passive: false,
+        passive: true,
       });
     });
   };
@@ -81,7 +80,7 @@ export const Slider = ({
         setCurrentSlide(slider.track.details.rel);
       },
       loop: true,
-      slides: { perView: "auto" },
+      slides: { perView: "auto", origin: "center" },
       created: () => {
         setLoaded(true);
       },

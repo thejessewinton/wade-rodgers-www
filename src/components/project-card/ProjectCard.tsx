@@ -53,10 +53,10 @@ export const ProjectCard = ({
           onClick={handlePlayerOpen}
           className="flex flex-col items-center justify-center text-white"
         >
-          <h2 className="font-sans text-4xl font-medium tracking-widest text-white dark:text-neutral-900 md:mb-8 md:text-8xl">
+          <h2 className="font-sans text-4xl font-medium tracking-widest text-white dark:text-neutral-900 md:mb-8 md:text-6xl">
             {asText(project.title)}
           </h2>
-          <span className="font-sans text-lg font-normal uppercase tracking-widest">
+          <span className="font-sans text-xl font-normal uppercase tracking-widest">
             {project.client}
           </span>
         </button>
@@ -68,7 +68,7 @@ export const ProjectCard = ({
           width={project.cover_image.widescreen.dimensions?.width}
           height={project.cover_image.widescreen.dimensions?.height}
           alt={asText(project.title)}
-          className="absolute w-full"
+          className="absolute block w-full md:hidden"
           placeholder="blur"
           blurDataURL={getBlurUrl(project.cover_image.widescreen.url)}
           quality={100}
@@ -80,7 +80,7 @@ export const ProjectCard = ({
         allowFullScreen
         loading="lazy"
         onLoad={handleLoad}
-        className="absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
+        className="absolute z-0 hidden h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700 md:block"
       />
 
       <Player
