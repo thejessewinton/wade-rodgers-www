@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { useIntersectionObserver } from "../../hooks/use-intersection-observer";
 import { useVisibleElement } from "../../hooks/use-visible-element";
 
 export const ActiveIdWrapper = ({
@@ -15,29 +16,16 @@ export const ActiveIdWrapper = ({
   className: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const entry = useIntersectionObserver(ref, {});
+  const isVisible = !!entry?.isIntersecting;
   const { setVisibleElementId } = useVisibleElement();
 
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      const entry = entries.find((e) => e.isIntersecting);
-
-      if (entry) {
-        const timeout = setTimeout(() => {
-          setVisibleElementId(entry?.target.id);
-        }, 200);
-
-        return () => clearTimeout(timeout);
-      }
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,
-    });
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    observer.observe(ref.current!);
-
-    return () => observer.disconnect();
-  }, [setVisibleElementId, ref]);
+    if (isVisible) {
+      setVisibleElementId(id);
+      entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [id, isVisible, setVisibleElementId, entry?.target]);
 
   return (
     <div ref={ref} id={id} className={className}>

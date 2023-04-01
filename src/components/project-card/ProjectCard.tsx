@@ -35,28 +35,15 @@ export const ProjectCard = ({
 
   const size = useScreenSize();
 
-  const autoplayParam = size.width >= 1024 ? "1" : "0";
-
-  const params = new URLSearchParams({
-    title: "0",
-    byline: "0",
-    portrait: "0",
-    autoplay: autoplayParam,
-    background: "1",
-    loop: "1",
-  });
-
-  console.log(project.preview.html);
-
   return (
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
       <button
         onClick={handlePlayerOpen}
         className="absolute z-10 flex w-full flex-col items-center justify-center opacity-0 transition-opacity duration-700 group-hover:opacity-100"
       >
-        <h2 className="flex flex-col gap-5 font-sans text-4xl font-medium tracking-widest text-white md:text-6xl">
+        <h2 className="flex flex-col gap-5 font-sans text-xl font-medium tracking-widest text-white md:text-6xl">
           {asText(project.title)}
-          <span className="font-sans text-xl font-normal uppercase tracking-widest">
+          <span className="font-sans text-base font-normal uppercase tracking-widest md:text-xl">
             {project.client}
           </span>
         </h2>
@@ -75,13 +62,15 @@ export const ProjectCard = ({
         />
       )}
 
-      <iframe
-        src={getPreviewUrl(project.preview.html as string)}
-        allowFullScreen
-        loading="lazy"
-        onLoad={handleLoad}
-        className="absolute z-0 hidden h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700 md:block"
-      />
+      {size.width >= 1024 ? (
+        <iframe
+          src={getPreviewUrl(project.preview.html as string)}
+          allowFullScreen
+          loading="lazy"
+          onLoad={handleLoad}
+          className="absolute z-0 hidden h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700 md:block"
+        />
+      ) : null}
 
       <Player
         video={getVideoUrl(project.video.embed_url as string)}

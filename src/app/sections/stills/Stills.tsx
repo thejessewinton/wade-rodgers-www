@@ -7,7 +7,7 @@ export const Stills = async () => {
 
   return (
     <ActiveIdWrapper id="stills" className="scroll-mt-16">
-      <div className="min-h-screen scroll-mt-16">
+      <div className="min-h-screen">
         <div className="ml-2 px-2">
           <h2 className="py-1 text-xl uppercase text-neutral-500">Stills</h2>
         </div>

@@ -7,7 +7,7 @@ export const SelectedWorks = async () => {
 
   return (
     <ActiveIdWrapper id="selected-works" className="scroll-mt-16">
-      <div className="scroll-mt-16 space-y-2 md:space-y-4">
+      <div className="flex flex-col gap-2 md:gap-4">
         {data.work.map((project, index) => {
           return <ProjectCard key={index} project={project} />;
         })}
