@@ -80,21 +80,11 @@ export const Slider = ({
       slideChanged: (slider) => {
         setCurrentSlide(slider.track.details.rel);
       },
+      loop: true,
+      slides: { perView: "auto" },
       created: () => {
         setLoaded(true);
       },
-      breakpoints: {
-        "(min-width: 640px)": {
-          slides: { perView: 1 },
-        },
-        "(min-width: 768px)": {
-          slides: { perView: 2 },
-        },
-        "(min-width: 1024px)": {
-          slides: { perView: 3 },
-        },
-      },
-      slides: { perView: 1 },
     },
     [WheelControls]
   );
@@ -103,12 +93,24 @@ export const Slider = ({
     <>
       <div ref={ref} className="keen-slider">
         {stills.map((still) => (
-          <div key={still.image.url} className="keen-slider__slide">
+          <div
+            key={still.image.url}
+            className="keen-slider__slide flex items-center justify-center"
+            style={{
+              minWidth: still.image.dimensions?.width
+                ? still.image.dimensions.width / 2
+                : 0,
+              maxWidth: still.image.dimensions?.width
+                ? still.image.dimensions.width / 2
+                : 0,
+            }}
+          >
             <Image
               src={getImageUrl(still.image.url as string)}
               alt={still.image.alt as string}
               width={still.image.dimensions?.width}
               height={still.image.dimensions?.height}
+              className="h-full w-full object-cover"
             />
           </div>
         ))}
