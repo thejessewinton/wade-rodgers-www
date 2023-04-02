@@ -16,14 +16,15 @@ export const ActiveIdWrapper = ({
   className: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const entry = useIntersectionObserver(ref, {});
+  const entry = useIntersectionObserver(ref, {
+    root: null,
+  });
   const isVisible = !!entry?.isIntersecting;
   const { setVisibleElementId } = useVisibleElement();
 
   useEffect(() => {
     if (isVisible) {
       setVisibleElementId(id);
-      entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [id, isVisible, setVisibleElementId, entry?.target]);
 

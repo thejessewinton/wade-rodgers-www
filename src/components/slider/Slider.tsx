@@ -80,7 +80,7 @@ export const Slider = ({
         setCurrentSlide(slider.track.details.rel);
       },
       loop: true,
-      slides: { perView: "auto", origin: "center" },
+      slides: { perView: "auto", origin: "auto" },
       created: () => {
         setLoaded(true);
       },
