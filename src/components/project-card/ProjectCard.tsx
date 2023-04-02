@@ -42,7 +42,7 @@ export const ProjectCard = ({
         onClick={handlePlayerOpen}
         className="absolute z-10 flex w-full flex-col items-center justify-center opacity-100 transition-opacity duration-700 group-hover:opacity-100 md:opacity-0"
       >
-        <h2 className="flex flex-col items-center justify-center gap-2 font-sans text-xl font-medium tracking-widest text-white md:gap-4 md:text-5xl">
+        <h2 className="flex flex-col items-center justify-center gap-2 font-sans text-xl font-bold tracking-widest text-white text-shadow md:gap-4 md:text-5xl">
           {asText(project.title)}
           <span className="font-sans text-sm font-normal uppercase tracking-widest md:text-xl">
             {project.client}

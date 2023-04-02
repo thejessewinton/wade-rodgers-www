@@ -25,6 +25,11 @@ module.exports = {
           "50%": { transform: "rotate(20deg)" },
         },
       },
+      textShadow: {
+        sm: "0 1px 2px var(--tw-shadow-color)",
+        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+        lg: "0 8px 16px var(--tw-shadow-color)",
+      },
       aspectRatio: {
         widescreen: "3/1",
       },
@@ -34,18 +39,14 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(({ matchUtilities, theme }) => {
+    plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
-          "animation-delay": (value) => {
-            return {
-              "animation-delay": value,
-            };
-          },
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
         },
-        {
-          values: theme("transitionDelay"),
-        }
+        { values: theme("textShadow") }
       );
     }),
     require("@tailwindcss/typography"),
