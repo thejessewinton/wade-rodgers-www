@@ -14,6 +14,7 @@ import {
   getVideoUrl,
 } from "../../utils/get-url";
 import Image from "next/image";
+import { PlayIcon } from "../icons/Icons";
 
 export const ProjectCard = ({
   project,
@@ -39,13 +40,15 @@ export const ProjectCard = ({
     <div className="group relative flex aspect-video items-center justify-center overflow-hidden md:aspect-widescreen">
       <button
         onClick={handlePlayerOpen}
-        className="absolute z-10 flex w-full flex-col items-center justify-center opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="absolute z-10 flex w-full flex-col items-center justify-center opacity-100 transition-opacity duration-700 group-hover:opacity-100 md:opacity-0"
       >
-        <h2 className="flex flex-col gap-5 font-sans text-xl font-medium tracking-widest text-white md:text-5xl">
+        <h2 className="flex flex-col items-center justify-center gap-2 font-sans text-xl font-medium tracking-widest text-white md:gap-4 md:text-5xl">
           {asText(project.title)}
-          <span className="font-sans text-base font-normal uppercase tracking-widest md:text-xl">
+          <span className="font-sans text-sm font-normal uppercase tracking-widest md:text-xl">
             {project.client}
           </span>
+
+          <PlayIcon className="block md:hidden" />
         </h2>
       </button>
 
