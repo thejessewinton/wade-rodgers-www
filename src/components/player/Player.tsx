@@ -31,18 +31,17 @@ export const Player = ({ open, onClose, video }: PlayerProps) => {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
             <button
               onClick={onClose}
-              className="absolute top-0 right-0 transition-transform duration-700 hover:rotate-180"
+              className="absolute top-0 right-0 transition-transform duration-700 hover:rotate-90"
             >
               <CloseIcon />
             </button>
-            {open ? (
-              <iframe
-                onLoad={handleLoad}
-                src={video}
-                allowFullScreen
-                className="min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
-              />
-            ) : null}
+
+            <iframe
+              onLoad={handleLoad}
+              src={video}
+              allowFullScreen
+              className="min-h-full w-auto min-w-full max-w-none transition-opacity duration-700"
+            />
           </div>
         </Transition.Child>
       </Dialog>

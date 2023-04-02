@@ -90,7 +90,7 @@ export const Slider = ({
 
   return (
     <>
-      <div ref={ref} className="keen-slider md:max-h-auto md:aspect-widescreen">
+      <div ref={ref} className="keen-slider">
         {stills.map((still) => (
           <div
             key={still.image.url}
@@ -109,7 +109,7 @@ export const Slider = ({
               alt={(still.image.alt as string) || ""}
               width={still.image.dimensions?.width}
               height={still.image.dimensions?.height}
-              className="h-full w-full object-cover"
+              className="h-full w-full"
             />
           </div>
         ))}
