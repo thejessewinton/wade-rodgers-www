@@ -124,7 +124,7 @@ export const Slider = ({
           >
             <LeftArrow className="h-24 w-24" />
           </button>
-          <span className="uppercase italic text-neutral-500">Swipe</span>
+
           <button
             onClick={() => instance.current?.next()}
             disabled={
