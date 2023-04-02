@@ -16,7 +16,6 @@ export const ScrollObserver = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={className}
-      viewport={{ once: true }}
     >
       {children}
     </motion.div>

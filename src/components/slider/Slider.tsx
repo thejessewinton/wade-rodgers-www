@@ -7,7 +7,6 @@ import { LeftArrow, RightArrow } from "../icons/Icons";
 import type { StillsDocumentDataImagesItem } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
 import { getImageUrl } from "../../utils/get-url";
-import { useScreenSize } from "../../hooks/use-screen-size";
 
 export const Slider = ({
   stills,
