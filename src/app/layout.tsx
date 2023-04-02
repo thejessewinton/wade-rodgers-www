@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import { Header } from "../components/header/Header";
 import { Footer } from "../components/footer/Footer";
+import { Copyright } from "../components/copyright/Copyright";
 
 const serif = Bona_Nova({
   variable: "--font-serif",
@@ -33,6 +34,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
           <div className="relative">{children}</div>
         </main>
         <Footer />
+        <Copyright />
       </body>
     </html>
   );
