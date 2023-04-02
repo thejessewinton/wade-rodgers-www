@@ -5,6 +5,15 @@
   "status": true,
   "json": {
     "Main": {
+      "section_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Section Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "images": {
         "type": "Group",
         "config": {

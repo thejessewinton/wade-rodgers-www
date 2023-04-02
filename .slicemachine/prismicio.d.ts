@@ -218,6 +218,17 @@ export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDoc
 /** Content for Stills documents */
 interface StillsDocumentData {
     /**
+     * Section Title field in *Stills*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.section_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    section_title: prismicT.RichTextField;
+    /**
      * Images field in *Stills*
      *
      * - **Field Type**: Group
