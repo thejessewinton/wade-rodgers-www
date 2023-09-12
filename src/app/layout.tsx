@@ -17,8 +17,9 @@ export const metadata: Metadata = {
   title: {
     default: "Director — Wade Rodgers",
     template: "%s — Wade Rodgers",
-    description: 'Wade Rodgers is a director with a background in dance and cinematography. This makes him a visually forward director with a keen sense of rhythm. Moved by compelling narrative, he’s mindful of developing a deep connection with the audience. We are the stories we tell ourselves.'
   },
+  description:
+    "Wade Rodgers is a director with a background in dance and cinematography. This makes him a visually forward director with a keen sense of rhythm. Moved by compelling narrative, he’s mindful of developing a deep connection with the audience. We are the stories we tell ourselves.",
 };
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
